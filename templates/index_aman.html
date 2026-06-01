@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Buku Tamu Online [AMAN]</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; min-height: 100vh; padding: 40px 20px; }
+    .container { max-width: 600px; margin: 0 auto; }
+    .header { background: #27ae60; color: white; padding: 20px 24px; border-radius: 12px 12px 0 0; }
+    .header h1 { font-size: 22px; }
+    .header p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+    .safe-note { background: #d4edda; border-left: 4px solid #27ae60; padding: 12px 16px; font-size: 13px; color: #155724; }
+    .form-box { background: white; padding: 28px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+    input, textarea { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; margin-bottom: 16px; }
+    textarea { height: 100px; resize: vertical; }
+    button { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #219a52; }
+    .error { color: #c0392b; font-size: 13px; margin-bottom: 14px; }
+    .nav { margin-top: 16px; text-align: center; font-size: 13px; }
+    .nav a { color: #27ae60; text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📖 Buku Tamu Online</h1>
+    <p>Versi Aman — Dengan Mitigasi Keamanan</p>
+  </div>
+  <div class="safe-note">
+    ✅ <strong>AMAN:</strong> Input divalidasi dan diproses dengan parameterized query. XSS dicegah oleh Jinja2 auto-escaping.
+  </div>
+  <div class="form-box">
+    {% if error %}<div class="error">⚠️ {{ error }}</div>{% endif %}
+    <form method="POST" action="/">
+      <label>Nama Lengkap</label>
+      <input type="text" name="nama" placeholder="Nama kamu" required maxlength="100">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="email@contoh.com" required maxlength="150">
+      <label>Pesan</label>
+      <textarea name="pesan" placeholder="Tulis pesanmu di sini..." maxlength="500"></textarea>
+      <button type="submit">✉️ Kirim Pesan</button>
+    </form>
+    <div class="nav">
+      <a href="/tamu">Lihat Daftar Tamu</a> |
+      <a href="/admin/login">Login Admin</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
